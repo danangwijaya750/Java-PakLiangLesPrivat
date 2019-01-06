@@ -13,11 +13,16 @@ public class PakGuru{
     }
     void renderNilai(){
         PengolahNilai pNilai = new PengolahNilai(nilai);
+        rataPerpelajaran(pNilai);
+        rataPersiswa(pNilai);
+        renderDataln("");
         renderDataln("==============Pengolahan Nilai==============");
         renderDataln("============================================");
-        rataPerpelajaran(pNilai);
+        renderDataAll();
         renderDataln("============================================");
-        rataPersiswa(pNilai);
+        renderRataPersiswa();
+        renderDataln("============================================");
+        renderRataPelajaran();
         renderDataln("============================================");
         renderDataln("rata-rata pelajaran Tertinggi : Pelajaran ke-"+(pNilai.getMaxRataValue(rataPelajaran)+1));
         renderDataln("============================================");
@@ -31,13 +36,33 @@ public class PakGuru{
     void rataPersiswa(PengolahNilai pNilai){
         for (int i = 0; i < 3; i++) {
             rataSiswa[i]=pNilai.getRataSiswa(i);
+        }
+    }
+
+    void renderRataPersiswa(){
+        for (int i = 0; i < 3; i++) {
             renderDataln("rata-rata nilai Siswa ke-"+(i+1)+" "+rataSiswa[i]);
         }
+    }
+    void renderRataPelajaran(){
+        for (int i = 0; i < nilai.length; i++) {
+            renderDataln("rata-rata nilai pelajaran ke-"+(i+1)+" "+rataPelajaran[i]);
+        }
+    }
+    void renderDataAll(){
+        System.out.printf("%10s %20s %5s %5s %5s %5s", "Siswa", "Pelajaran-1", "Pelajaran-2", "Pelajaran-3", "Pelajaran-4","Rata-rata");
+        renderDataln("");renderDataln("-----------------------------------------------------------------------------------------------");
+        for (int i = 0; i < 3; i++) {
+            System.out.printf("%10s %20s %10s %10s %10s %10s", "Siswa ke-"+(i+1)+"", ""+nilai[0][i]+"", ""+nilai[1][i]+"", ""+nilai[2][i]+"", ""+nilai[3][i]+"",""+rataSiswa[i]+"");
+            renderDataln("");
+            }
+        renderDataln("-----------------------------------------------------------------------------------------------");
+        System.out.printf("%10s %10s %10s %10s %10s %10s", "Rata-rata Pelajaran",  ""+rataPelajaran[0]+"", ""+rataPelajaran[1]+"", ""+rataPelajaran[2]+"", ""+rataPelajaran[3]+"","-");
+        renderDataln("");renderDataln("-----------------------------------------------------------------------------------------------");
     }
     void rataPerpelajaran(PengolahNilai pNilai){
         for (int i = 0; i < nilai.length; i++) {
             rataPelajaran[i]=pNilai.getRataPelajaran(i);
-            renderDataln("rata-rata nilai pelajaran ke-"+(i+1)+" "+rataPelajaran[i]);
         }
     }
     void inputNilai(){
