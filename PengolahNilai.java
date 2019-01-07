@@ -1,15 +1,10 @@
 public class PengolahNilai{
     double[][] nilai;
+    //. constructor
     public PengolahNilai(double nilai[][]) {
         this.nilai=nilai;
     }
-
-    public void printNilai(int row,int col){
-        renderData(""+nilai[row][col]);
-    }
-    void renderData(String data){
-        System.out.println(data);
-    }
+    //. mendapatkan nilai rata-rata pelajaran
     double getRataPelajaran(int row){
         double result=0;
         double temp = Math.pow(10, 2);
@@ -17,6 +12,7 @@ public class PengolahNilai{
         result = (double) Math.round(result*temp)/temp;
         return result;
     }
+    //. mendapatkan nilai rata-rata siswa
     double getRataSiswa(int col){
         double result=0;
         double temp = Math.pow(10, 2);
@@ -24,6 +20,7 @@ public class PengolahNilai{
         result = (double) Math.round(result*temp)/temp;
         return result;
     }
+    //. mendaptkan pemilik rata-rata tertinggi
     int getMaxRataValue(double rata[]){
         int result=0;
         double maxVal=rata[0];
@@ -35,6 +32,7 @@ public class PengolahNilai{
         }
         return result;
     }
+    //. mendaptkan pemilik rata-rata terendah
     int getMinRataValue(double rata[]){
         int result=0;
         double minVal=rata[0];
